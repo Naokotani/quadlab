@@ -1,0 +1,14 @@
+[Unit]
+Description=DNS for local applications managed by coredns
+
+[Container]
+Image=coredns:latest
+Network=host
+PublishPort=1053:53/tcp
+PublishPort=1053:53/udp
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

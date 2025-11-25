@@ -1,0 +1,9 @@
+[Unit]
+Description=Digital Ocean dynamic dns go script
+
+[Container]
+Image=ddns:latest
+Secret=digital-ocean-token,type=env,target=API_TOKEN
+
+[Service]
+Type=oneshot

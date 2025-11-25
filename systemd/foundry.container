@@ -1,0 +1,14 @@
+[Unit]
+Description=FoundryVTT web applciation container
+
+[Container]
+Image=foundryvtt:latest
+Network=homelab
+PublishPort=30000:30000
+Volume=/home/naokotani/.config/containers/foundryvtt/foundrydata:/data:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

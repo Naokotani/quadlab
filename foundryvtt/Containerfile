@@ -1,0 +1,20 @@
+FROM node:20-slim
+
+ENV FOUNDRY_HOME=/opt/foundryvtt
+ENV FOUNDRY_DATA=/data
+ENV FOUNDRY_ZIP=FoundryVTT-Node-13.348.zip
+
+WORKDIR ${FOUNDRY_HOME}
+
+RUN apt-get update && apt-get install -y unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY ${FOUNDRY_ZIP} /tmp/foundryvtt.zip
+
+RUN unzip /tmp/foundryvtt.zip -d ${FOUNDRY_HOME} \
+    && rm /tmp/foundryvtt.zip
+
+EXPOSE 30000
+VOLUME ["${FOUNDRY_DATA}"]
+
+CMD ["node", "main.js", "--dataPath=/data"]

@@ -1,0 +1,20 @@
+[Unit]
+Description=Jellyfind media server container
+
+[Container]
+Image=docker.io/jellyfin/jellyfin:latest
+AutoUpdate=registry
+Network=homelab
+PublishPort=8096:8096/tcp
+UserNS=keep-id
+Volume=/home/naokotani/.config/jellyfin/config:/config:Z
+Volume=/home/naokotani/.config/jellyfin/cache:/cache:Z
+Volume=/mnt/media:/media:Z
+AddDevice=nvidia.com/gpu=0
+
+[Service]
+SuccessExitStatus=0 143
+Restart=always
+
+[Install]
+WantedBy=default.target

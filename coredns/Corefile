@@ -1,0 +1,10 @@
+.:1053 {
+    hosts {
+        192.168.2.28 media.chris-hughes.dev
+        192.168.2.28 foundry.chris-hughes.dev
+        fallthrough
+      }
+    forward . 47.55.55.55:53
+    errors
+    log
+}

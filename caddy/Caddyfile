@@ -1,0 +1,8 @@
+# /etc/caddy/Caddyfile
+media.chris-hughes.dev {
+	reverse_proxy http://systemd-jellyfin:8096
+}
+
+foundry.chris-hughes.dev {
+	reverse_proxy http://systemd-foundry:30000
+}

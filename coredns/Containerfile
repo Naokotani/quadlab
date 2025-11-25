@@ -1,0 +1,16 @@
+ARG DEBIAN_IMAGE=debian:stable-slim
+ARG BASE=gcr.io/distroless/static-debian12:nonroot
+
+FROM --platform=$BUILDPLATFORM ${DEBIAN_IMAGE} AS build
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get -qq update \
+    && apt-get -qq --no-install-recommends install libcap2-bin
+COPY coredns /coredns
+RUN setcap cap_net_bind_service=+ep /coredns
+
+FROM ${BASE}
+COPY --from=build /coredns /coredns
+WORKDIR /
+COPY Corefile /etc/coredns/Corefile
+EXPOSE 1053 1053/udp
+ENTRYPOINT ["/coredns", "--conf", "/etc/coredns/Corefile"]

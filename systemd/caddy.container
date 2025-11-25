@@ -1,0 +1,17 @@
+[Unit]
+Description=Reverse proxy for home lab web applications
+
+[Container]
+Image=caddy-proxy:latest
+Network=homelab
+PublishPort=8080:80
+PublishPort=8443:443
+PublishPort=8443:443/udp
+Volume=caddy-data:/data:Z
+Volume=caddy-config:/config:Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
