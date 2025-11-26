@@ -6,11 +6,12 @@ Image=docker.io/jellyfin/jellyfin:latest
 AutoUpdate=registry
 Network=homelab
 PublishPort=8096:8096/tcp
-UserNS=keep-id
-Volume=/home/naokotani/.config/jellyfin/config:/config:Z
-Volume=/home/naokotani/.config/jellyfin/cache:/cache:Z
+Volume=/mnt/media/config:/config:Z
+Volume=/mnt/media/cache:/cache:Z
+Environment=JELLYFIN_DATA_DIR=/var/lib/jellyfin
+Volume=/mnt/media/data:/var/lib/jellyfin:Z
 Volume=/mnt/media:/media:Z
-AddDevice=nvidia.com/gpu=0
+AddDevice=nvidia.com/gpu=all
 
 [Service]
 SuccessExitStatus=0 143
