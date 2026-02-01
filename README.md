@@ -4,7 +4,7 @@ Quadlab is a personal homelab project built to explore **declarative, reproducib
 
 The goal of this project is to model *production-style service management* in a small, understandable environment while keeping configuration explicit, auditable, and easy to reproduce.
 
-Quadlab is not intended to be a replacement for container orchestration tools like Kubernetes, but to push the limits of reproducibility and declarative infrastructure with the tools that exist on Fedora Atomic spins
+Quadlab is not intended to be a replacement for container orchestration tools like Kubernetes, but to push the limits of reproducibility and declarative infrastructure with the tools that exist on Fedora Atomic spins.
 
 ## Why Quadlab?
 
